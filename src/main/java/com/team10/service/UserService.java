@@ -15,4 +15,8 @@ public class UserService {
     public User login(String username, String password){
         return userMapper.detail(Maps.build().put("username",username).put("password",password).getMap());
     }
+    public int create(User user) {
+        return this.userMapper.create(user);
+    }
+
 }

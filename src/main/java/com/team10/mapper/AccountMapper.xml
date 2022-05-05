@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team10.mapper.UserMapper">
+    <sql id="Base_Column_List">
+        account_no,
+        balance
+    </sql>
+    <resultMap id="Account" type="com.team10.entity.Account">
+        <result column="account_no" property="account_no"/>
+        <result column="balance" property="balance"/>
+    </resultMap>
+
+    <select id="detail" resultMap="Account">
+        select
+            account_no, balance
+        from bank.account
+        where account_no = #{account_no}
+    </select>
+    <insert id="create">
+        insert into bank.account(account)
+        values (#{account})
+    </insert>
+    <update id="update">
+        update bank.account
+        <set>
+            <if test="balance != null and balance != ''">
+                balance = #{balance},
+            </if>
+        </set>
+        where account_no = #{account_no}
+    </update>
+</mapper>
