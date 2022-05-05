@@ -16,11 +16,8 @@
     </insert>
     <update id="update">
         update account
-        <set>
-            <if test="balance != null and balance != ''">
-                balance = #{balance},
-            </if>
-        </set>
+        <include refid="AccountUpdateCriteria"></include>
+<!--        <include refid="AccountFindCriteria"></include>-->
         where accountNo = #{accountNo}
     </update>
     <sql id="AccountFindCriteria">
@@ -28,5 +25,10 @@
             <if test="accountNo !=null and accountNo !=''">and accountNo = #{accountNo}</if>
             <if test="balance !=null and balance !=''">and balance = #{balance}</if>
         </where>
+    </sql>
+    <sql id="AccountUpdateCriteria">
+        <set>
+            <if test="updateBalance !=null and updateBalance !=''" > balance = #{updateBalance},</if>
+        </set>
     </sql>
 </mapper>

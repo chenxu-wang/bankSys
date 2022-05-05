@@ -3,17 +3,17 @@ package com.team10.entity;
 
 public class User {
 
-  private long id;
+  private Integer id;
   private String username;
   private String password;
-  private long account_no;
+  private Integer accountNo;
 
 
-  public long getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -36,12 +36,12 @@ public class User {
   }
 
 
-  public long getAccountNo() {
-    return account_no;
+  public Integer getAccountNo() {
+    return accountNo;
   }
 
-  public void setAccountNo(long accountNo) {
-    this.account_no = accountNo;
+  public void setAccountNo(Integer accountNo) {
+    this.accountNo = accountNo;
   }
 
 }
