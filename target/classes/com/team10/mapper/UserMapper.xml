@@ -5,13 +5,13 @@
         id,
         username,
         `password`,
-        account_no
+        accountNo
     </sql>
     <resultMap id="User" type="com.team10.entity.User">
         <id column="id" property="id"/>
         <result column="username" property="username"/>
         <result column="password" property="password"/>
-        <result column="account_no" property="account_no"/>
+        <result column="accountNo" property="accountNo"/>
     </resultMap>
     <select id="detail" resultMap="User">
         select * from user
@@ -23,7 +23,7 @@
             <if test="id !=null">and id = #{id}</if>
             <if test="username !=null and username !=''" >and username like concat('%',#{username},'%')</if>
             <if test="password !=null and password !=''" >and password = #{password}</if>
-            <if test="account_no !=null and account_no !=''">and account_no = #{account_no}</if>
+            <if test="accountNo !=null and accountNo !=''">and accountNo = #{accountNo}</if>
         </where>
     </sql>
 </mapper>

@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/account")
 public class AccountController {
     @Autowired
-    AccountService accountService;
+    private AccountService accountService;
     @PostMapping("/detail")
-    public Result detail(Integer account_no){
-        Account account = accountService.detail(account_no);
+    public Result detail(Integer accountNo){
+        Account account = accountService.detail(accountNo);
         return Result.ok(account);
     }
     @PostMapping("/create")

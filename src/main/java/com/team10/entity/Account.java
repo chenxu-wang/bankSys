@@ -3,16 +3,16 @@ package com.team10.entity;
 
 public class Account {
 
-  private Integer account_no;
+  private Integer accountNo;
   private double balance;
 
 
   public Integer getAccountNo() {
-    return account_no;
+    return accountNo;
   }
 
-  public void setAccountNo(Integer account_no) {
-    this.account_no = account_no;
+  public void setAccountNo(Integer accountNo) {
+    this.accountNo = accountNo;
   }
 
 
