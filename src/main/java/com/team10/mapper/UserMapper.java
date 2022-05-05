@@ -6,5 +6,7 @@ import java.util.Map;
 
 public interface UserMapper {
     public User detail(Map<String,Object> paramMap);
+    public int create(User user);
+    public Double query(int id);
 
 }

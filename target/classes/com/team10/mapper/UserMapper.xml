@@ -5,13 +5,13 @@
         id,
         username,
         `password`,
-        accountNo
+        balance
     </sql>
     <resultMap id="User" type="com.team10.entity.User">
         <id column="id" property="id"/>
         <result column="username" property="username"/>
         <result column="password" property="password"/>
-        <result column="accountNo" property="accountNo"/>
+        <result column="balance" property="balance"/>
     </resultMap>
     <select id="detail" resultMap="User">
         select * from user
@@ -23,8 +23,16 @@
             <if test="id !=null">and id = #{id}</if>
             <if test="username !=null and username !=''" >and username like concat('%',#{username},'%')</if>
             <if test="password !=null and password !=''" >and password = #{password}</if>
-            <if test="accountNo !=null and accountNo !=''">and accountNo = #{accountNo}</if>
+            <if test="balance !=null and balance !=''">and balance = #{balance}</if>
         </where>
     </sql>
+    <insert id="create"  keyProperty="id" useGeneratedKeys="true" parameterType="com.team10.entity.User">
+        insert into user(id,username,password,balance)
+            value(#{id},#{username},#{password},#{balance})
+    </insert>
+    <select id="query" resultType="java.lang.Double">
+        select balance from user
+        where id = #{id}
+    </select>
 </mapper>
 

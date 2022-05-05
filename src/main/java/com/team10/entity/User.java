@@ -6,7 +6,16 @@ public class User {
   private Integer id;
   private String username;
   private String password;
-  private Integer accountNo;
+
+  public double getBalance() {
+    return balance;
+  }
+
+  public void setBalance(double balance) {
+    this.balance = balance;
+  }
+
+  private double balance;
 
 
   public Integer getId() {
@@ -33,15 +42,6 @@ public class User {
 
   public void setPassword(String password) {
     this.password = password;
-  }
-
-
-  public Integer getAccountNo() {
-    return accountNo;
-  }
-
-  public void setAccountNo(Integer accountNo) {
-    this.accountNo = accountNo;
   }
 
 }
