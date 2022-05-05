@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -22,7 +24,8 @@ public class UserController {
         return Result.ok(user);
     }
     @PostMapping("/query")
-    public Result query(Integer id) {
+    public Result query(@RequestBody Map<String,String> map) {
+        Integer id = Integer.parseInt(map.get("id"));
         Double balance = userService.query(id);
         return Result.ok(balance);
     }
