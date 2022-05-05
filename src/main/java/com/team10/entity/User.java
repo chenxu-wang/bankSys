@@ -6,7 +6,7 @@ public class User {
   private long id;
   private String username;
   private String password;
-  private long accountNo;
+  private long account_no;
 
 
   public long getId() {
@@ -37,11 +37,11 @@ public class User {
 
 
   public long getAccountNo() {
-    return accountNo;
+    return account_no;
   }
 
   public void setAccountNo(long accountNo) {
-    this.accountNo = accountNo;
+    this.account_no = accountNo;
   }
 
 }

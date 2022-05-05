@@ -16,10 +16,10 @@ public class AccountService {
         return this.accountMapper.create(account);
     }
     public int update(Account account){
-        return accountMapper.update(Maps.build(account.getAccountNo()).beanToMapForUpdate(account));
+        return this.accountMapper.update(Maps.build(account.getAccountNo()).beanToMapForUpdate(account));
     }
     public Account detail(Integer accountNo){
-        return accountMapper.detail(Maps.build(accountNo).getMap());
+        return this.accountMapper.detail(Maps.build().put("accountNo",accountNo).getMap());
     }
 
 
