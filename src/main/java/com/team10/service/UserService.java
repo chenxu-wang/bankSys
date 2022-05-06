@@ -12,6 +12,9 @@ public class UserService {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private CheckParamService checkParamService;
+
     public User login(String username, String password){
         return userMapper.detail(Maps.build().put("username",username).put("password",password).getMap());
     }
@@ -20,5 +23,30 @@ public class UserService {
     }
     public Double query(Integer id){
         return userMapper.query(id);
+    }
+
+    /*
+    * @id user id
+    * @value deposit money
+    * */
+    public Double deposit(Integer id, String amountStr){
+        checkParamService.checkAmount(amountStr);
+        Double balance = query(id);
+        balance = balance + Double.parseDouble(amountStr);
+        updateBalance(id, balance);
+        return query(id);
+    }
+
+    public Double withdrawal(Integer id, String amountStr){
+        checkParamService.checkAmount(amountStr);
+        Double balance = query(id);
+        balance = balance - Double.parseDouble(amountStr);
+        updateBalance(id, balance);
+        return query(id);
+    }
+
+    public void updateBalance(Integer id, Double balance){
+        userMapper.updateBalance(id, balance);
+        return;
     }
 }

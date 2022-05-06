@@ -34,5 +34,11 @@
         select balance from user
         where id = #{id}
     </select>
+
+    <update id="updateBalance">
+        update User set
+                        balance = #{balance}
+        where id = #{id}
+    </update>
 </mapper>
 

@@ -29,4 +29,19 @@ public class UserController {
         Double balance = userService.query(id);
         return Result.ok(balance);
     }
+
+    @PostMapping("/deposit")
+    public Result deposit(@RequestBody Map<String,String> map) {
+        Integer id = Integer.parseInt(map.get("id"));
+        Double balance = userService.deposit(id, map.get("amount"));
+        return Result.ok(balance);
+    }
+
+    @PostMapping("/withdrawal")
+    public Result withdrawal(@RequestBody Map<String,String> map) {
+        Integer id = Integer.parseInt(map.get("id"));
+        Double balance = userService.withdrawal(id, map.get("amount"));
+        return Result.ok(balance);
+    }
+
 }
