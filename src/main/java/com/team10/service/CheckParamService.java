@@ -14,7 +14,7 @@ public class CheckParamService {
 
     public void checkAmount(String amount){
         //The pattern checks for amount with 1 dot: 3.56
-        String regex1 = "(0|[1-9][0-9]*)\\.[0-9]{2}";
+        String regex1 = "(0|[1-9][0-9]*)\\.[0-9]{1,2}";
         //The pattern checks for amount with 0 dot: 3
         String regex2 = "(0|[1-9][0-9]*)";
         if (amount != null && (amount.matches(regex1) || amount.matches(regex2))) {
