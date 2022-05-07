@@ -1,6 +1,7 @@
 package com.team10.controller;
 
 import com.team10.entity.User;
+import com.team10.framework.exception.MyException;
 import com.team10.service.UserService;
 import com.team10.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 @RestController
@@ -16,6 +18,8 @@ import java.util.Map;
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private HttpServletRequest request;
 
     @PostMapping("/create")
     public Result create(@RequestBody User user) {
@@ -33,6 +37,11 @@ public class UserController {
     @PostMapping("/deposit")
     public Result deposit(@RequestBody Map<String,String> map) {
         Integer id = Integer.parseInt(map.get("id"));
+//      Check user has privilege to deposit id
+//        User user = (User) request.getAttribute("user");
+//        if(user.getId() !=  id){
+//            throw new MyException("Invalid Id");
+//        }
         Double balance = userService.deposit(id, map.get("amount"));
         return Result.ok(balance);
     }

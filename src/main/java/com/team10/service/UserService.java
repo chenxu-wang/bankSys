@@ -1,6 +1,7 @@
 package com.team10.service;
 
 import com.team10.entity.User;
+import com.team10.framework.exception.MyException;
 import com.team10.mapper.UserMapper;
 import com.team10.utils.Maps;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +41,13 @@ public class UserService {
     public Double withdrawal(Integer id, String amountStr){
         checkParamService.checkAmount(amountStr);
         Double balance = query(id);
+        Double amount = Double.parseDouble(amountStr);
+        if (balance-amount<0){
+            throw new MyException("You don't have sufficient balance");
+        }
         balance = balance - Double.parseDouble(amountStr);
         updateBalance(id, balance);
+        System.out.println();
         return query(id);
     }
 
